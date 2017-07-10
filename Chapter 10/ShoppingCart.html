@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Northwind Trading Shopping Cart</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="js/RequireJS/require.js"></script>
+    <script type="text/javascript" src="js/kendo.core.patched.js"></script>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <!-- ko foreach: categories -->
+            <li class="data-as-hyperlink" data-bind="click: $parent.showProducts, text: CategoryName"></li>
+            <!-- /ko -->
+        </ul>
+    </div>
+    <script type="text/javascript">
+        require.config({
+            baseUrl: "js"
+        });
+
+        require(["cart.data"], function () {
+            var url = "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Categories",
+                //filter = {
+                //    field: "CategoryID",
+                //    operator: "eq",
+                //    value: 1
+                //},
+                dataSource = window.cart.kendoDS(url);
+            dataSource.bind("change", function () {
+                console.log(this.view().toJSON())
+            });
+            dataSource.read();
+        });
+    </script>
+</body>
+</html>

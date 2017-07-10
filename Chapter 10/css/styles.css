@@ -1,0 +1,10 @@
+﻿li[data-bind].data-as-hyperlink {
+    font-weight: bold;
+    color: #065394;
+    cursor: pointer;
+}
+
+li[data-bind].data-as-hyperlink:hover
+{
+    text-decoration: underline;
+}
