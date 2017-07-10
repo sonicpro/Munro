@@ -11,12 +11,17 @@
 </head>
 <body>
     <div class="container">
-        <ul>
-            <!-- ko foreach: categories -->
-            <li class="data-as-hyperlink" data-bind="click: $parent.showProducts, text: CategoryName"></li>
-            <!-- /ko -->
+        <ul data-bind="template: { name: 'category-template', foreach: '$data }">
         </ul>
     </div>
+    <script type="text/html" id="category-template">
+        <li data-bind="click: $.noop()">
+            <h2 data-bind="text:CategoryName"></h2>
+            <p data-bind="html: Description"></p>
+        </li>
+    </script>
+    <script type="text/javascript" src="js/viewModel.js"></script>
+    <!-- <script type="text/javascript" src="js/knockout.debug.js"></script> -->
     <script type="text/javascript">
         require.config({
             baseUrl: "js",
@@ -24,19 +29,9 @@
                 jquery: "jquery/jquery"
             }
         });
-
-        require(["cart.data"], function () {
-            var url = "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Categories",
-                //filter = {
-                //    field: "CategoryID",
-                //    operator: "eq",
-                //    value: 1
-                //},
-                dataSource = window.cart.kendoDS(url);
-            dataSource.bind("change", function () {
-                console.log(this.view().toJSON())
-            });
-            dataSource.read();
+        require(["categories", "viewModel"], function () {
+            var viewModel = new window.cart.ViewModel(window.cart.categories);
+            ko.applyBindings(viewModel);
         });
     </script>
 </body>
