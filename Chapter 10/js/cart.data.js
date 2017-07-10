@@ -1,6 +1,6 @@
 // JavaScript source code
 (function (f, define) {
-    define("cart.data", ["kendo.data", "jquery/jquery"], f);
+    define("cart.data", ["kendo.data", "jquery"], f);
 })(
     // This funcition is executed by require.js.
     function () {
