@@ -1,9 +1,9 @@
 /*global define */
 (function (f, define) {
-    define("viewModel", ["cart.data"], f);
+    define(["categories"], f);
 })(
     function () {
-        window.cart.ViewModel = function (categories) {
+        return function viewModel(categories) {
             this.categories = categories;
         };
     },

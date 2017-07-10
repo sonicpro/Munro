@@ -11,17 +11,15 @@
 </head>
 <body>
     <div class="container">
-        <ul data-bind="template: { name: 'category-template', foreach: '$data }">
+        <ul data-bind="template: { name: 'category-template', foreach: categories }">
         </ul>
     </div>
     <script type="text/html" id="category-template">
-        <li data-bind="click: $.noop()">
+        <li data-bind="click: $.noop()" class="data-as-hyperlink">
             <h2 data-bind="text:CategoryName"></h2>
             <p data-bind="html: Description"></p>
         </li>
     </script>
-    <script type="text/javascript" src="js/viewModel.js"></script>
-    <!-- <script type="text/javascript" src="js/knockout.debug.js"></script> -->
     <script type="text/javascript">
         require.config({
             baseUrl: "js",
@@ -29,9 +27,12 @@
                 jquery: "jquery/jquery"
             }
         });
-        require(["categories", "viewModel"], function () {
-            var viewModel = new window.cart.ViewModel(window.cart.categories);
-            ko.applyBindings(viewModel);
+        require(["knockout.debug", "viewModel", "categories"], function (ko, viewModel, categories) {
+            var categoryDS = categories();
+            categoryDS.bind("change", function() {
+                ko.applyBindings(new viewModel(categoryDS.view().toJSON()));
+            });
+            categoryDS.read();
         });
     </script>
 </body>

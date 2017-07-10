@@ -1,7 +1,13 @@
-﻿li[data-bind].data-as-hyperlink {
-    font-weight: bold;
+﻿ul[data-bind] {
+    list-style: none;
+}
+
+li[data-bind].data-as-hyperlink {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
     color: #065394;
     cursor: pointer;
+    padding-top: 7px;
+    border-bottom: 1px solid #eee;
 }
 
 li[data-bind].data-as-hyperlink:hover
