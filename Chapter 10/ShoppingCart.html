@@ -14,7 +14,7 @@
         <ul data-bind="template: { name: 'category-template', foreach: categories }">
         </ul>
     </div>
-    <script type="text/html" id="category-template">
+    <script type="text/x-ko-template" id="category-template">
         <li data-bind="click: $.noop()" class="data-as-hyperlink">
             <h2 data-bind="text:CategoryName"></h2>
             <p data-bind="html: Description"></p>
