@@ -10,7 +10,8 @@
                 cart: {
                     kendoDS: function (url, options) {
                         var settings = $.extend({
-                            filter: null
+                            filter: null,
+                            observableToUpdate: null
                         }, options || {});
                         return new kendo.data.DataSource({
                             transport: {
@@ -18,7 +19,8 @@
                             },
                             type: "odata",
                             serverFiltering: true,
-                            filter: settings.filter
+                            filter: settings.filter,
+                            observableToUpdate: settings.observableToUpdate
                         });
                     }
                 }

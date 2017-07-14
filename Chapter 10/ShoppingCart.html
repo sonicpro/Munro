@@ -25,9 +25,9 @@
     <script type="text/x-ko-template" id="item-template">
         <div class="entry">
             <h3 class="term" data-bind="text: ProductName"></h3>
-            <div class="quote" data-bind="text: 'Unit price: ' + UnitPrice"></div>
+            <div class="quote" data-bind="text: 'Price: $' + UnitPrice"></div>
             <img data-bind="attr: { src: 'https://demos.telerik.com/kendo-ui/content/web/foods/' + ProductID + '.jpg' }" />
-            <p><input data-bind="{ click: $.noop, value: $parent.addButtonText }"></p>
+            <p><input type="button" data-bind="{ click: $.noop, value: $parent.addButtonText }"></p>
         </div>
     </script>
     <script type="text/javascript">
