@@ -5,20 +5,30 @@
     <meta charset="utf-8" />
     <title>Northwind Trading Shopping Cart</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/06.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <script type="text/javascript" src="js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="js/kendo.core.patched.js"></script>
 </head>
 <body>
     <div class="container">
         <ul data-bind="template: { name: 'category-template', foreach: categories }">
         </ul>
+        <div data-bind="template: { name: 'item-template', foreach: categoryProducts }">
+        </div>
     </div>
     <script type="text/x-ko-template" id="category-template">
-        <li data-bind="click: $.noop()" class="data-as-hyperlink">
+        <li data-bind="click: $parent.setFilter" class="data-as-hyperlink">
             <h2 data-bind="text:CategoryName"></h2>
             <p data-bind="html: Description"></p>
         </li>
+    </script>
+    <script type="text/x-ko-template" id="item-template">
+        <div class="entry">
+            <h3 class="term" data-bind="text: ProductName"></h3>
+            <div class="quote" data-bind="text: 'Unit price: ' + UnitPrice"></div>
+            <img data-bind="attr: { src: 'https://demos.telerik.com/kendo-ui/content/web/foods/' + ProductID + '.jpg' }" />
+            <p><input data-bind="{ click: $.noop, value: $parent.addButtonText }"></p>
+        </div>
     </script>
     <script type="text/javascript">
         require.config({
@@ -30,7 +40,7 @@
         require(["knockout.debug", "viewModel", "categories"], function (ko, viewModel, categories) {
             var categoryDS = categories();
             categoryDS.bind("change", function() {
-                ko.applyBindings(new viewModel(categoryDS.view().toJSON()));
+                ko.applyBindings(new viewModel(categoryDS.view().toJSON(), ko));
             });
             categoryDS.read();
         });

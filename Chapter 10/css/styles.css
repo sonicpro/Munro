@@ -10,7 +10,11 @@ li[data-bind].data-as-hyperlink {
     border-bottom: 1px solid #eee;
 }
 
-li[data-bind].data-as-hyperlink:hover
-{
+li[data-bind].data-as-hyperlink:hover {
     text-decoration: underline;
+}
+
+div.container {
+    float: left;
+    width: 50%;
 }

@@ -1,6 +1,6 @@
 /*global jQuery, define, kendo */
 (function (f, define) {
-    define("cart.data", ["kendo.data", "jquery"], f);
+    define("cart.data", ["kendo.data.min", "jquery"], f);
 })(
     // This funcition is executed by require.js.
     function () {
