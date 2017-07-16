@@ -1,4 +1,9 @@
-﻿ul[data-bind] {
+﻿.container {
+    float: left;
+    width: 50%;
+}
+
+ul[data-bind] {
     list-style: none;
 }
 
@@ -14,7 +19,10 @@ li[data-bind].data-as-hyperlink:hover {
     text-decoration: underline;
 }
 
-div.container {
-    float: left;
-    width: 50%;
+.wrapper {
+    position: relative;
+}
+
+.sticky {
+    position: fixed;
 }

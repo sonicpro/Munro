@@ -27,10 +27,14 @@ h3 {
    Chapter Styles
 ***************************************/
 
-
+.entry-visible {
+    padding: 1em 0em 1em 40px;
+    border-bottom: 1px solid #eee;
+}
 .entry {
   padding: 1em 0em 1em 40px;
   border-bottom: 1px solid #eee;
+  display: none;
 }
 .entry .term {
   display: inline;

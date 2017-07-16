@@ -10,10 +10,23 @@
     <script type="text/javascript" src="js/RequireJS/require.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="catalogContainer">
         <ul data-bind="template: { name: 'category-template', foreach: categories }">
         </ul>
-        <div data-bind="template: { name: 'item-template', foreach: categoryProducts }">
+        <div data-bind="template: { name: 'catalog-item-template', foreach: categoryProducts }">
+        </div>
+    </div>
+    <div class="container wrapper">
+        <div class="container sticky">
+            <h2>Northwind Shopping Cart</h2>
+            <!-- ko foreach: { data: cartItems, afterAdd: fadeIn, beforeRemove: fadeOut } -->
+            <div class="entry" data-bind="visible: $data.length > 0">
+                <!-- ko template: "cart-item-template" -->
+                <!-- /ko -->
+                <p><button data-bind="click: $parent.removeItem">Remove</button></p>
+            </div>
+            <!-- /ko -->
+            <h2>Total: <span data-bind="text: kendo.toString(cartTotal(), 'c2')"></span></h2>
         </div>
     </div>
     <script type="text/x-ko-template" id="category-template">
@@ -22,13 +35,17 @@
             <p data-bind="html: Description"></p>
         </li>
     </script>
-    <script type="text/x-ko-template" id="item-template">
-        <div class="entry">
+    <script type="text/x-ko-template" id="catalog-item-template">
+        <div class="entry-visible">
             <h3 class="term" data-bind="text: ProductName"></h3>
             <div class="quote" data-bind="text: 'Price: $' + UnitPrice"></div>
             <img data-bind="attr: { src: 'https://demos.telerik.com/kendo-ui/content/web/foods/' + ProductID + '.jpg' }" />
-            <p><input type="button" data-bind="{ click: $.noop, value: $parent.addButtonText }"></p>
+            <p><button data-bind="click: $parent.addItem">Add to cart</button></p>
         </div>
+    </script>
+    <script type="text/x-ko-template" id="cart-item-template">
+        <h3 class="term" data-bind="text: $data.ProductName + ($parent.quantities()[ProductID+[]] === 1 ? '' : ' x ' + $parent.quantities()[ProductID+[]])"></h3>
+        <div class="quote" data-bind="text: 'Price: $' + $data.UnitPrice"></div>
     </script>
     <script type="text/javascript">
         require.config({
