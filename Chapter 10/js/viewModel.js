@@ -58,7 +58,7 @@
                 this.removeItem = function () {
                     // Notice push() and remove() methods of ko.obeservableArray().
                     // "this" points to the cart item.
-                    var unwrapped = ko.toJS(self.quantities);
+                    var unwrapped = self.quantities();
                     self.cartItems.remove(this);
                     unwrapped[this.ProductID+[]] = 0;
                     self.quantities(unwrapped);
