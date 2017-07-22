@@ -1,4 +1,4 @@
-/*global jQuery, define, kendo */
+/*global jQuery, define, kendo, window */
 (function (f, define) {
     define("cart.data", ["kendo.data.min", "jquery"], f);
 })(

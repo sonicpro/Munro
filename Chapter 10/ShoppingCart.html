@@ -49,9 +49,11 @@
     </script>
     <script type="text/javascript">
         require.config({
-            baseUrl: "js",
+            baseUrl: "js/lib",
             paths: {
-                jquery: "jquery/jquery"
+                "cart.data": "../cart.data",
+                categories: "../categories",
+                viewModel: "../viewModel"
             }
         });
         require(["knockout.debug", "viewModel", "categories"], function (ko, viewModel, categories) {

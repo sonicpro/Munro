@@ -1,0 +1,16 @@
+<project name="northwind shopping cart" default="validate">
+
+  <loadproperties srcfile="build.properties" />
+
+  <target name="validate">
+    <apply executable="java" failonerror="true" parallel="true">
+      <fileset dir="${src.dir}" includes="**/*.js" />
+      <arg line="-jar" />
+      <arg path="${rhino}" />
+      <arg path="${jshint}" />
+      <arg line="${jshint.options}" />
+      <srcfile />
+    </apply>
+  </target>
+
+</project>
