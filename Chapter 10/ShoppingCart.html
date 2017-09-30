@@ -53,15 +53,34 @@
             paths: {
                 "cart.data": "../cart.data",
                 categories: "../categories",
-                viewModel: "../viewModel"
+                viewModel: "../viewModel",
+                scrollUp: "../jquery.scrollUp"
             }
         });
-        require(["knockout.debug", "viewModel", "categories"], function (ko, viewModel, categories) {
+        require(["knockout.debug", "viewModel", "categories", "scrollUp"], function (ko, viewModel, categories) {
             var categoryDS = categories();
             categoryDS.bind("change", function() {
                 ko.applyBindings(new viewModel(categoryDS.view().toJSON(), ko));
             });
             categoryDS.read();
+            $(function () {
+                $.scrollUp({
+                    scrollName: 'scroll-top-button', // Element ID
+                    scrollClass: 'scroll-top-btn', // Element Class
+                    scrollDistance: 300, // Distance from top/bottom before showing element (px)
+                    scrollFrom: 'top', // top or bottom
+                    scrollSpeed: 300, // Speed back to top (ms )
+                    easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+                    animation: 'slide', // Fade, slide, none
+                    animationInSpeed: 200, // Animation in speed (ms )
+                    animationOutSpeed: 200, // Animation out speed (ms )
+                    scrollText: '<img src="img/_.gif" class="scroll-top-btn-icon sprite" alt="▲" width="15" height="16"></img>', // Text for element, can contain HTML
+                    scrollTitle: false, // Set a custom link title if required. Defaults to scrollText
+                    scrollImg: false, // Set true to use image
+                    activeOverlay: false, // Set CSS color to display scrollUp active point
+                    zIndex: 500 // Z-Index for the overlay
+                });
+            });
         });
     </script>
 </body>

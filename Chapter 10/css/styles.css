@@ -26,3 +26,54 @@ li[data-bind].data-as-hyperlink:hover {
 .sticky {
     position: fixed;
 }
+/* Borrowed from http://rozetka.ua */
+.scroll-top-btn {
+    position: fixed;
+    right: 3.0em;
+    bottom: 4.0em;
+    width: 3.6em;
+    height: 3.6em;
+    border: 2px solid #a8cbeb;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 500;/
+}
+
+.scroll-top-btn-icon {
+    background-position: 0 -12103px;
+    width: 15px;
+    height: 16px;
+    top: 1.0em;
+    left: 1.1em;
+}
+
+.scroll-top-btn:hover {
+    border-color: #fec4c8;
+}
+
+.scroll-top-btn:hover .scroll-top-btn-icon {
+    background-position: 0 -12085px;
+    width: 15px;
+    height: 16px;
+}
+
+.scroll-top-btn:active {
+    border-color: #b7dafd;
+}
+
+.scroll-top-btn:active .scroll-top-btn-icon {
+    background-position: 0 -12067px;
+    width: 15px;
+    height: 16px;
+}
+
+.sprite {
+    position: relative;
+}
+
+.sprite {
+    background-image: url(../sprite/sprite.png);
+    background-repeat: no-repeat;
+}
