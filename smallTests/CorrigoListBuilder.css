@@ -1,0 +1,62 @@
+.corrigo-list-builder {
+  width: 100%;
+  display: inline-block;
+  background: transparent url(/CorpNet/Content/Less/Theme1/Widgets/images/switch.png) no-repeat 50% 50%;
+}
+.selectable-container,
+.selected-container {
+  font-family: Arial;
+  font-size: 13px;
+  background: #fff;
+  color: #4b4b4b;
+  width: 47%;
+}
+.selectable-container > .list-header,
+.selected-container > .list-header {
+  font-size: 12px;
+  line-height: 27px;
+  text-transform: uppercase;
+  text-indent: 2px;
+}
+.selectable-container > ul,
+.selected-container > ul {
+  border: 1px solid #ccc;
+  position: relative;
+  height: 220px;
+  padding: 0;
+  overflow-y: auto;
+  width: 100%;
+}
+.selectable-container > ul > li.list-item,
+.selected-container > ul > li.list-item {
+  font-family: Arial;
+  font-size: 13px;
+  color: #4b4b4b;
+  padding: 0 5px 0 15px;
+  line-height: 27px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.selectable-container > ul > li.list-item:hover,
+.selected-container > ul > li.list-item:hover {
+  color: #fff;
+  background-color: #90a5c2;
+  text-decoration: none;
+}
+.selectable-container > ul[disabled='disabled'],
+.selected-container > ul[nonHideableOnly='true'] {
+  background-color: #eee;
+  color: #999;
+  cursor: text;
+  pointer-events: none;
+}
+.selectable-container {
+  float: left;
+}
+.selected-container {
+  float: right;
+}
